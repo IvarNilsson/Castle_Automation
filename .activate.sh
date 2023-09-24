@@ -63,7 +63,7 @@ echo -e '
 Welcome to Castle_Automation!
    To program write: prog_file?
 \033[4mCommands:\033[0m
-\033[1m  prog\033[0m    build and program device
+\033[1m  build \033[0m    build and program device ex file named "prog.cpp" in src write: build prog
 '
 
 #
