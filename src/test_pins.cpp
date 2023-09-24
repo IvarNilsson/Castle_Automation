@@ -44,6 +44,7 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
+    Serial.println("GO!");
     // pinMode(LED_R, OUTPUT);
     // pinMode(LED_Y, OUTPUT);
     // pinMode(LED_G, OUTPUT);
@@ -62,20 +63,20 @@ void setup() {
     digitalWrite(MATRIX_LATCH, HIGH);
 
     Serial.begin(115200);
-    Serial.println("GO!");
 
     if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
         Serial.println(F("SSD1306 allocation failed"));
+        for (;;)
+            ;
     }
     delay(2000);
     display.clearDisplay();
-
     display.setTextSize(1);
     display.setTextColor(WHITE);
     display.setCursor(0, 10);
-    // Display static text
     display.println("Hello, world!");
     display.display();
+    Serial.println("Setup done!");
 }
 
 void loop() {}
