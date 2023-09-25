@@ -27,5 +27,5 @@
 #define LED_G 27 
 
 #define FOTO_RESISTOR 13
-#define TEMP 35
+#define TEMP_SENSOR 35
 

@@ -15,8 +15,8 @@
 #define RFID_SCK 18
 #define RFID_SDA 5
 
-//#define OLED_SCL 22 //not needed
-//#define OLED_SDA 21 
+// #define OLED_SCL 22 //not needed
+// #define OLED_SDA 21
 
 #define RGB_R 15  // might be wrong order :)
 #define RGB_G 14  // might be wrong order :)
@@ -40,8 +40,9 @@
 
 #define Serial Serial
 
-// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+int i = 0;
 
 void setup() {
     Serial.println("GO!");
@@ -49,18 +50,10 @@ void setup() {
     // pinMode(LED_Y, OUTPUT);
     // pinMode(LED_G, OUTPUT);
 
-    // pinMode(BTN_R, INPUT);
-    // pinMode(BTN_G, INPUT);
-    // pinMode(BTN_B, INPUT);
-    // pinMode(BTN_Y, INPUT);
-
-    pinMode(MATRIX_DATA, OUTPUT);
-    pinMode(MATRIX_CLOCK, OUTPUT);
-    pinMode(MATRIX_LATCH, OUTPUT);
-
-    digitalWrite(MATRIX_DATA, LOW);
-    digitalWrite(MATRIX_CLOCK, LOW);
-    digitalWrite(MATRIX_LATCH, HIGH);
+    pinMode(BTN_R, INPUT);
+    pinMode(BTN_G, INPUT);
+    pinMode(BTN_B, INPUT);
+    pinMode(BTN_Y, INPUT);
 
     Serial.begin(115200);
 
@@ -79,4 +72,44 @@ void setup() {
     Serial.println("Setup done!");
 }
 
-void loop() {}
+void loop() {
+    display.clearDisplay();
+
+    display.setCursor(100, 0);
+    display.println(i);
+
+    display.setCursor(0, 0);
+    if (digitalRead(BTN_R) == 1) {
+        display.println("RED:    ON");
+    } else {
+        display.println("RED:    OFF");
+    }
+
+    display.setCursor(0, 15);
+    if (digitalRead(BTN_G) == 1) {
+        display.println("GREEN:  ON");
+    } else {
+        display.println("GREEN:  OFF");
+    }
+
+    display.setCursor(0, 30);
+    if (digitalRead(BTN_B) == 1) {
+        display.println("BLUE:   ON");
+    } else {
+        display.println("BLUE:   OFF");
+    }
+
+    display.setCursor(0, 45);
+    if (digitalRead(BTN_Y) == 1) {
+        display.println("YELLOW: ON");
+    } else {
+        display.println("YELLOW: OFF");
+    }
+
+    display.display();
+    delay(500);
+    i++;
+    if (i == 100) {
+        i = 0;
+    }
+}

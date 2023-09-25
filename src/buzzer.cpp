@@ -1,17 +1,16 @@
-//#include "arduino.h"
+#define BUZZER 33
+#include <Arduino.h>
 #include "pitches.h"
 
-const int buzzerPin = 16; //for Arduino Microcontroller
-//const int buzzerPin = D7; //for ESP8266 Microcontroller
-//const int buzzerPin = 4; //for ESP32 Microcontroller
+#define BUZZER 33
 
 void beep(int note, int duration){
-  tone(buzzerPin, note, duration);
+  tone(BUZZER, note, duration);
   delay(duration);
 }
 
 void setup(){
-  pinMode(buzzerPin, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
 }
  
 void loop() {
