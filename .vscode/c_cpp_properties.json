@@ -6,11 +6,12 @@
                 "${workspaceFolder}/**",
                 "/home/joker/.arduino15/packages/arduino/tools/**",
                 "/home/joker/.arduino15/packages/arduino/hardware/**",
+                "/home/joker/.arduino15/packages/esp32/**",
+                "/home/joker/.arduino15/libraries/**",
                 "/home/joker/Arduino/libraries/**",
                 "/home/joker/Arduino/libraries/Adafruit_GFX_Library",
                 "/home/joker/Arduino/libraries/Adafruit_BusIO",
-                "/home/joker/Arduino/libraries/pitches",
-                "/home/joker/.arduino15/libraries/**"
+                "/home/joker/Arduino/libraries/pitches"
             ],
             "defines": [
                 "USBCON",

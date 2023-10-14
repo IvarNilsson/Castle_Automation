@@ -4,9 +4,9 @@
 
 #define BUZZER 33
 
-#define BTN_R 36
+#define BTN_R 34
 #define BTN_G 39
-#define BTN_B 34
+#define BTN_B 36
 #define BTN_Y 32
 
 #define RFID_RST 0
@@ -46,9 +46,9 @@ int i = 0;
 
 void setup() {
     Serial.println("GO!");
-    // pinMode(LED_R, OUTPUT);
-    // pinMode(LED_Y, OUTPUT);
-    // pinMode(LED_G, OUTPUT);
+    pinMode(LED_R, OUTPUT);
+    pinMode(LED_Y, OUTPUT);
+    pinMode(LED_G, OUTPUT);
 
     pinMode(BTN_R, INPUT);
     pinMode(BTN_G, INPUT);
@@ -81,29 +81,42 @@ void loop() {
     display.setCursor(0, 0);
     if (digitalRead(BTN_R) == 1) {
         display.println("RED:    ON");
+        digitalWrite(LED_R, 1);
     } else {
         display.println("RED:    OFF");
+        digitalWrite(LED_R, 0);
     }
 
     display.setCursor(0, 15);
     if (digitalRead(BTN_G) == 1) {
         display.println("GREEN:  ON");
+        digitalWrite(LED_G, 1);
     } else {
         display.println("GREEN:  OFF");
+        digitalWrite(LED_G, 0);
     }
 
     display.setCursor(0, 30);
     if (digitalRead(BTN_B) == 1) {
         display.println("BLUE:   ON");
+        digitalWrite(LED_R, 1);
+        digitalWrite(LED_G, 1);
+        digitalWrite(LED_Y, 1);
+
     } else {
         display.println("BLUE:   OFF");
+        digitalWrite(LED_R, 0);
+        digitalWrite(LED_G, 0);
+        digitalWrite(LED_Y, 0);
     }
 
     display.setCursor(0, 45);
     if (digitalRead(BTN_Y) == 1) {
         display.println("YELLOW: ON");
+        digitalWrite(LED_Y, 1);
     } else {
         display.println("YELLOW: OFF");
+        digitalWrite(LED_Y, 0);
     }
 
     display.display();

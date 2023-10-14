@@ -14,8 +14,9 @@ void setup() {
     pinMode(MATRIX_CLOCK, OUTPUT);
     pinMode(MATRIX_LATCH, OUTPUT);
 
-    // Initialize shift registers
+    // Initialize shift registers and set them to zero
     digitalWrite(MATRIX_LATCH, LOW);
+    // fix this to use my improved algorithm
     shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
     shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
     digitalWrite(MATRIX_LATCH, HIGH);
@@ -28,9 +29,16 @@ void loop() {
         MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 255 - smileyPattern[i]);
         MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, pow(2, i));
         digitalWrite(MATRIX_LATCH, HIGH);
+        delay(1);  // test this delay I think 100hz should be fine
     }
 }
 
+// build this that uses the improved myshiftout
+void displayImage(byte image[8]){
+    
+}
+
+// fix this to make it simpler
 void MYshiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder,
                 uint8_t val) {
     digitalWrite(clockPin, LOW);
