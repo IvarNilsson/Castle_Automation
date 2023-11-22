@@ -51,13 +51,14 @@ if [ ! -d "$VENV_NAME" ]; then
 fi
 # TODO: Add explicit python min version and check
 . $VENV_NAME/bin/activate
-python --version
+python3 --version
 
 #
 # Useful aliases
 #
 alias clean="git clean -xdie $VENV_NAME"
 alias build='sh .build.sh'
+alias add_lib='sh .add_lib.sh'
 
 echo -e '
 Welcome to Castle_Automation!
