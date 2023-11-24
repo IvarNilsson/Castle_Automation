@@ -16,12 +16,14 @@
                 "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/newlib/platform_include/sys",
                 "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/newlib/platform_include",
                 "/home/joker/.arduino15/packages/esp32/tools/xtensa-esp32-elf-gcc/esp-2021r2-patch5-8.4.0/xtensa-esp32-elf/sys-include",
-                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/variants/esp32" // might be wrong pin version
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/variants/esp32", // might be wrong pin version
+                "/home/joker/Arduino/libraries/ivar_lib"
             ],
             "defines": [],
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"
+            
         }
     ],
     "version": 4
