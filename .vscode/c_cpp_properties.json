@@ -4,29 +4,24 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/joker/.arduino15/packages/arduino/tools/**",
-                "/home/joker/.arduino15/packages/arduino/hardware/**",
-                "/home/joker/.arduino15/packages/esp32/**",
-                "/home/joker/.arduino15/libraries/**",
-                "/home/joker/Arduino/libraries/**",
-                "/home/joker/Arduino/libraries/Adafruit_GFX_Library",
-                "/home/joker/Arduino/libraries/Adafruit_BusIO",
-                "/home/joker/Arduino/libraries/pitches"
+                "/usr/include",
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/cores/esp32/",
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/freertos/include/freertos/", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/freertos/include", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/freertos/include/esp_additions/freertos", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/dio_qspi/include", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/esp_common/include", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/freertos/port/xtensa/include/freertos", //test if needed
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/**",
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/newlib/platform_include/sys",
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/tools/sdk/esp32/include/newlib/platform_include",
+                "/home/joker/.arduino15/packages/esp32/tools/xtensa-esp32-elf-gcc/esp-2021r2-patch5-8.4.0/xtensa-esp32-elf/sys-include",
+                "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/variants/esp32" // might be wrong pin version
             ],
-            "defines": [
-                "USBCON",
-                "ARDUINO=10813",
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE",
-                "F_CPU=16000000L",
-                "ARDUINO_AVR_UNO",
-                "ARDUINO_ARCH_AVR"
-            ],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c17",
+            "defines": [],
+            "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "intelliSenseMode": "clang-x64"
         }
     ],
     "version": 4
