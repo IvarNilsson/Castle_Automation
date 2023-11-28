@@ -1,7 +1,7 @@
 #include "ivar_lib.h"
 
 ivar_lib::ivar_lib() {
-  // Constructor - Set the Wi-Fi credentials
+  // Constructor 
 }
 
 void ivar_lib::ivar_shiftOut(gpio_num_t dataPin, gpio_num_t clockPin,

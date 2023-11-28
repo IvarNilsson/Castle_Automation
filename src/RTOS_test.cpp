@@ -4,7 +4,7 @@
 #include "driver/gpio.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "ivar_lib.h"
+//#include "ivar_lib.h"
 
 extern "C" void app_main();
 
@@ -93,8 +93,8 @@ void task_Matrix(void *arg) {
   // Initialize shift registers and set them to zero
   gpio_set_level(MATRIX_LATCH, 0);
   // fix this to use my improved algorithm
-  shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
-  shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
+  //shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
+  //shiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 0);
   gpio_set_level(MATRIX_LATCH, 1);
 
   while (1) {
