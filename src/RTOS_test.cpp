@@ -39,6 +39,8 @@ extern "C" void app_main();
 #define FOTO_RESISTOR 13
 #define TEMP_SENSOR 35
 
+ivar_lib ivar;
+
 void task_LED_R(void *arg) {
 	gpio_pad_select_gpio(LED_R);
 	gpio_set_direction(LED_R, GPIO_MODE_OUTPUT);
@@ -100,12 +102,12 @@ void task_Matrix(void *arg) {
 		// Display the smiley face pattern
 		for (int i = 0; i < 8; i++) {
 			gpio_set_level(MATRIX_LATCH, 0);
-			// MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, 255 - smileyPattern[i]);
-			// MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, pow(2, i));
+			ivar.ivar_shiftOut(MATRIX_DATA, MATRIX_CLOCK, 255 - smileyPattern[i]);
+			ivar.ivar_shiftOut(MATRIX_DATA, MATRIX_CLOCK, pow(2, i));
 			gpio_set_level(MATRIX_LATCH, 1);
 
 			// test this delay I think 60hz should be fine
-			vTaskDelay(10 / portTICK_PERIOD_MS);
+			vTaskDelay(1 / portTICK_PERIOD_MS);
 		}
 	}
 }
@@ -114,7 +116,7 @@ void app_main(void) {
 	// xTaskCreate(task1, "task1", 4096, NULL, 10, &myTask1Handle);
 	// xTaskCreate(task2, "task2", 4096, NULL, 9, &myTask2Handle);
 	xTaskCreate(task_LED_R, "task_LED_R", 4096, NULL, 10, NULL);
-	xTaskCreate(task_LED_Y, "task_LED_Y", 4096, NULL, 9, NULL);
-	xTaskCreate(task_LED_G, "task_LED_G", 4096, NULL, 1, NULL);
+	//xTaskCreate(task_LED_Y, "task_LED_Y", 4096, NULL, 9, NULL);
+	//xTaskCreate(task_LED_G, "task_LED_G", 4096, NULL, 1, NULL);
 	xTaskCreate(task_Matrix, "taskMatrix", 4096, NULL, 3, NULL);
 }
