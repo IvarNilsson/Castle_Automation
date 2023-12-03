@@ -116,7 +116,7 @@ void app_main(void) {
 	// xTaskCreate(task1, "task1", 4096, NULL, 10, &myTask1Handle);
 	// xTaskCreate(task2, "task2", 4096, NULL, 9, &myTask2Handle);
 	xTaskCreate(task_LED_R, "task_LED_R", 4096, NULL, 10, NULL);
-	//xTaskCreate(task_LED_Y, "task_LED_Y", 4096, NULL, 9, NULL);
-	//xTaskCreate(task_LED_G, "task_LED_G", 4096, NULL, 1, NULL);
+	// xTaskCreate(task_LED_Y, "task_LED_Y", 4096, NULL, 9, NULL);
+	// xTaskCreate(task_LED_G, "task_LED_G", 4096, NULL, 1, NULL);
 	xTaskCreate(task_Matrix, "taskMatrix", 4096, NULL, 3, NULL);
 }

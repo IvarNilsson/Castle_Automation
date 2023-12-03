@@ -15,12 +15,12 @@
 #define RFID_SCK 18
 #define RFID_SDA 5
 
-//#define OLED_SCL 22 //not needed
-//#define OLED_SDA 21 
+// #define OLED_SCL 22 //not needed
+// #define OLED_SDA 21
 
-#define RGB_R 15  // might be wrong order :)
-#define RGB_G 14  // might be wrong order :)
-#define RGB_B 12  // might be wrong order :)
+#define RGB_R 15 // might be wrong order :)
+#define RGB_G 14 // might be wrong order :)
+#define RGB_B 12 // might be wrong order :)
 
 #define LED_R 25
 #define LED_Y 27
@@ -35,8 +35,8 @@
 #include <SPI.h>
 #include <Wire.h>
 
-#define SCREEN_WIDTH 128  // OLED display width, in pixels
-#define SCREEN_HEIGHT 64  // OLED display height, in pixels
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
 #define Serial Serial
 
@@ -44,39 +44,39 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 void setup() {
-    Serial.println("GO!");
-    // pinMode(LED_R, OUTPUT);
-    // pinMode(LED_Y, OUTPUT);
-    // pinMode(LED_G, OUTPUT);
+	Serial.println("GO!");
+	// pinMode(LED_R, OUTPUT);
+	// pinMode(LED_Y, OUTPUT);
+	// pinMode(LED_G, OUTPUT);
 
-    // pinMode(BTN_R, INPUT);
-    // pinMode(BTN_G, INPUT);
-    // pinMode(BTN_B, INPUT);
-    // pinMode(BTN_Y, INPUT);
+	// pinMode(BTN_R, INPUT);
+	// pinMode(BTN_G, INPUT);
+	// pinMode(BTN_B, INPUT);
+	// pinMode(BTN_Y, INPUT);
 
-    pinMode(MATRIX_DATA, OUTPUT);
-    pinMode(MATRIX_CLOCK, OUTPUT);
-    pinMode(MATRIX_LATCH, OUTPUT);
+	pinMode(MATRIX_DATA, OUTPUT);
+	pinMode(MATRIX_CLOCK, OUTPUT);
+	pinMode(MATRIX_LATCH, OUTPUT);
 
-    digitalWrite(MATRIX_DATA, LOW);
-    digitalWrite(MATRIX_CLOCK, LOW);
-    digitalWrite(MATRIX_LATCH, HIGH);
+	digitalWrite(MATRIX_DATA, LOW);
+	digitalWrite(MATRIX_CLOCK, LOW);
+	digitalWrite(MATRIX_LATCH, HIGH);
 
-    Serial.begin(115200);
+	Serial.begin(115200);
 
-    if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-        Serial.println(F("SSD1306 allocation failed"));
-        for (;;)
-            ;
-    }
-    delay(2000);
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 10);
-    display.println("Hello, world!");
-    display.display();
-    Serial.println("Setup done!");
+	if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+		Serial.println(F("SSD1306 allocation failed"));
+		for (;;)
+			;
+	}
+	delay(2000);
+	display.clearDisplay();
+	display.setTextSize(1);
+	display.setTextColor(WHITE);
+	display.setCursor(0, 10);
+	display.println("Hello, world!");
+	display.display();
+	Serial.println("Setup done!");
 }
 
 void loop() {}

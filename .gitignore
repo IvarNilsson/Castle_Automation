@@ -2,3 +2,4 @@ venv
 Castle_PCB-backups
 *.zip
 run
+lib_private
