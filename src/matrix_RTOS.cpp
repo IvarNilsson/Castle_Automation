@@ -35,25 +35,21 @@ void task_Matrix(void *arg) {
 void displayImage(byte image[8]) {
 	for (int i = 0; i < 8; i++) {
 		gpio_set_level(MATRIX_LATCH, 0);
-		MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, 255 - image[i]);
-		MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, MSBFIRST, pow(2, i));
+		MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, 255 - image[i]);
+		MYshiftOut(MATRIX_DATA, MATRIX_CLOCK, pow(2, i));
 		gpio_set_level(MATRIX_LATCH, 1);
 		vTaskDelay(2 / portTICK_PERIOD_MS);
 	}
 }
 
 // fix this to make it simpler
-void MYshiftOut(gpio_num_t dataPin, gpio_num_t clockPin, uint8_t bitOrder, uint8_t val) {
+void MYshiftOut(gpio_num_t dataPin, gpio_num_t clockPin, uint8_t val) {
 
 	gpio_set_level(clockPin, LOW);
 	for (int i = 0; i < 8; i++) {
-		if (bitOrder == LSBFIRST) {
-			gpio_set_level(dataPin, val & 1);
-			val >>= 1;
-		} else {
-			gpio_set_level(dataPin, (val & 128) != 0);
-			val <<= 1;
-		}
+
+		gpio_set_level(dataPin, (val & 128) != 0);
+		val <<= 1;
 
 		ivar_delay_u(10);
 		gpio_set_level(clockPin, HIGH);
