@@ -18,9 +18,9 @@
 // #define OLED_SCL 22 //not needed
 // #define OLED_SDA 21
 
-#define RGB_R 15 // might be wrong order :)
-#define RGB_G 14 // might be wrong order :)
-#define RGB_B 12 // might be wrong order :)
+#define RGB_R 15 
+#define RGB_G 12 
+#define RGB_B 14 
 
 #define LED_R 25
 #define LED_Y 27
@@ -55,6 +55,10 @@ void setup() {
 	pinMode(BTN_B, INPUT);
 	pinMode(BTN_Y, INPUT);
 
+	pinMode(RGB_R, OUTPUT);
+	pinMode(RGB_G, OUTPUT);
+	pinMode(RGB_B, OUTPUT);
+
 	Serial.begin(115200);
 
 	if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
@@ -69,6 +73,9 @@ void setup() {
 	display.setCursor(0, 10);
 	display.println("Hello, world!");
 	display.display();
+
+	setColor(0, 0, 0); // RGB_LED off
+
 	Serial.println("Setup done!");
 }
 
@@ -82,6 +89,7 @@ void loop() {
 	if (digitalRead(BTN_R) == 1) {
 		display.println("RED:    ON");
 		digitalWrite(LED_R, 1);
+		setColor(255, 0, 0); // Red Color
 	} else {
 		display.println("RED:    OFF");
 		digitalWrite(LED_R, 0);
@@ -91,6 +99,7 @@ void loop() {
 	if (digitalRead(BTN_G) == 1) {
 		display.println("GREEN:  ON");
 		digitalWrite(LED_G, 1);
+		setColor(0, 255, 0); // Green Color
 	} else {
 		display.println("GREEN:  OFF");
 		digitalWrite(LED_G, 0);
@@ -99,21 +108,18 @@ void loop() {
 	display.setCursor(0, 30);
 	if (digitalRead(BTN_B) == 1) {
 		display.println("BLUE:   ON");
-		digitalWrite(LED_R, 1);
-		digitalWrite(LED_G, 1);
-		digitalWrite(LED_Y, 1);
+		setColor(0, 0, 255); // Blue Color
 
 	} else {
 		display.println("BLUE:   OFF");
-		digitalWrite(LED_R, 0);
-		digitalWrite(LED_G, 0);
-		digitalWrite(LED_Y, 0);
 	}
 
 	display.setCursor(0, 45);
 	if (digitalRead(BTN_Y) == 1) {
 		display.println("YELLOW: ON");
 		digitalWrite(LED_Y, 1);
+		setColor(255, 255, 255); // White Color
+
 	} else {
 		display.println("YELLOW: OFF");
 		digitalWrite(LED_Y, 0);
@@ -121,8 +127,10 @@ void loop() {
 
 	display.display();
 	delay(500);
-	i++;
-	if (i == 100) {
-		i = 0;
-	}
+}
+
+void setColor(int redValue, int greenValue, int blueValue) {
+	analogWrite(RGB_R, 255 - redValue);
+	analogWrite(RGB_G, 255 - greenValue);
+	analogWrite(RGB_B, 255 - blueValue);
 }
