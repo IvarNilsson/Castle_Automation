@@ -23,6 +23,7 @@
                 "~/Arduino/libraries/Adafruit-GFX-Library-master",
                 "~/Arduino/libraries/pitches",
                 "/home/joker/.arduino15/packages/esp32/hardware/esp32/2.0.13/variants/esp32", // might be wrong pin version
+                "~/Arduino/libraries/rfid/**",
                 "/home/joker/Arduino/libraries/ivar_lib"
             ],
             "defines": [],

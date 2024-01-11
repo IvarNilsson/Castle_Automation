@@ -18,9 +18,9 @@
 // #define OLED_SCL 22 //not needed
 // #define OLED_SDA 21
 
-#define RGB_R 15 
-#define RGB_G 12 
-#define RGB_B 14 
+#define RGB_R 15
+#define RGB_G 12
+#define RGB_B 14
 
 #define LED_R 25
 #define LED_Y 27
@@ -45,6 +45,7 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 int i = 0;
 
 void setup() {
+	Serial.begin(115200);
 	Serial.println("GO!");
 	pinMode(LED_R, OUTPUT);
 	pinMode(LED_Y, OUTPUT);
@@ -58,8 +59,6 @@ void setup() {
 	pinMode(RGB_R, OUTPUT);
 	pinMode(RGB_G, OUTPUT);
 	pinMode(RGB_B, OUTPUT);
-
-	Serial.begin(115200);
 
 	if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
 		Serial.println(F("SSD1306 allocation failed"));
